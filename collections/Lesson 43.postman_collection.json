@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "f37002cf-adec-4e23-ac1d-1453b29023ec",
+		"name": "Lesson 43",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1911365"
+	},
+	"item": [
+		{
+			"name": "Create account",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// А ось тут вже цікавіше! Перед тим як користуватися cookies.jar() вам потрібно додати domain до allowlist\r",
+							"\r",
+							"\r",
+							"const cookieJar = pm.cookies.jar();\r",
+							"//cookieJar.set(\"https://qauto.forstudy.space\", \"test_key\", \"test_value\"); // Просто додаємо кукі\r",
+							"\r",
+							"\r",
+							"// А ось і наші callback функції\r",
+							"\r",
+							"/*\r",
+							"cookieJar.set(\"https://qauto.forstudy.space\", \"test2_key\", \"test_value\", function(error, cookie) {\r",
+							"    if (error) {\r",
+							"        console.error(\"Помилка під час встановлення cookie:\", error);\r",
+							"    } else {\r",
+							"        console.log(\"Cookie було успішно встановлено:\", cookie);\r",
+							"    }\r",
+							"});\r",
+							"*/\r",
+							"\r",
+							"// Ну і звісно приклда стрілкової функції з додатковими параметрами cookie\r",
+							"/*\r",
+							"let cookie = {\r",
+							"    name:'test2',\r",
+							"    value:'test2',  \r",
+							"    secure: true, \r",
+							"    httpOnly: true    \r",
+							"}\r",
+							"\r",
+							"cookieJar.set(\"https://qauto.forstudy.space\",cookie, (error, cookie)=> {\r",
+							"    if (error) {\r",
+							"        console.error(\"Помилка під час встановлення cookie:\", error);\r",
+							"    } else {\r",
+							"        console.log(\"Cookie було успішно встановлено:\", cookie);\r",
+							"    }\r",
+							"});\r",
+							"*/\r",
+							"\r",
+							"// Ну і звісно інші CRUD маніпуляції з кукою\r",
+							"\r",
+							"/*\r",
+							"cookieJar.get(\"https://qauto.forstudy.space\", \"test2\", function(error, cookie) {\r",
+							"    if (error) {\r",
+							"        console.error(\"Помилка під час встановлення cookie:\", error);\r",
+							"    } else {\r",
+							"        console.log(\"Cookie було успішно встановлено:\", cookie);\r",
+							"    }\r",
+							"});\r",
+							"*/\r",
+							"\r",
+							"/*\r",
+							"cookieJar.getAll(\"https://qauto.forstudy.space\", function(error, cookie) {\r",
+							"    if (error) {\r",
+							"        console.error(\"Помилка під час встановлення cookie:\", error);\r",
+							"    } else {\r",
+							"        console.log(\"Cookie було успішно встановлено:\", cookie);        \r",
+							"    }\r",
+							"});\r",
+							"*/\r",
+							"\r",
+							"\r",
+							"cookieJar.unset(\"https://qauto.forstudy.space\" , \"test2\", (error, cookie)=>{\r",
+							"   if (error) {\r",
+							"        console.error(\"Помилка під час встановлення cookie:\", error);\r",
+							"    } else {\r",
+							"        console.log(\"Cookie було успішно встановлено:\", cookie);\r",
+							"        return cookie;\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableCookies": false,
+				"followRedirects": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qauto.forstudy.space/api/auth/signup",
+					"protocol": "https",
+					"host": [
+						"qauto",
+						"forstudy",
+						"space"
+					],
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
